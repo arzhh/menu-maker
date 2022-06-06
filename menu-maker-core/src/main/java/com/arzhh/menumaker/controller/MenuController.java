@@ -28,15 +28,37 @@ public class MenuController {
     }
 
     @GetMapping("/pick")
-    Menu oneOfAll() {
-        long count = menuRepository.count();
-        Random random = new Random();
-        long randNumber = random.nextLong(count)+1l;
-        Menu menu = menuRepository.findById(randNumber).get();
-        log.debug(menu.toString());
-        menu.setAlreadySeen(true);
-        menuRepository.flush();
-        return menu;
+    Menu pick() {
+        List<Menu> all = menuRepository.findByAlreadySeen(false);
+        int count = all.size();
+        if (count > 0) {
+            Random random = new Random();
+            int randNumber = random.nextInt(count);
+            Menu menu = all.get(randNumber);
+            log.debug(menu.toString());
+            menu.setAlreadySeen(true);
+            menuRepository.flush();
+            return menu;
+        } else {
+            return null;
+        }
+    }
+
+    @GetMapping("/pickevening")
+    Menu pickEvening() {
+        List<Menu> evening = menuRepository.findByEveningAndAlreadySeen(true, false);
+        int count = evening.size();
+        if (count > 0) {
+            Random random = new Random();
+            int randNumber = random.nextInt(count);
+            Menu menu = evening.get(randNumber);
+            log.debug(menu.toString());
+            menu.setAlreadySeen(true);
+            menuRepository.flush();
+            return menu;
+        } else {
+            return null;
+        }
     }
 
     @PostMapping("/reset")

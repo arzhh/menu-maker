@@ -15,15 +15,10 @@ public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Column
     private String content;
-    @Column
     private String book;
-    @Column
     private int page;
-    @Column
     private boolean evening;
-    @Column
     private boolean alreadySeen;
 
     public Menu(String content, String book, int page, boolean evening) {
