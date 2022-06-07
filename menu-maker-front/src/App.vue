@@ -1,24 +1,29 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+<script setup>
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <div class="main-block">
+        <h1>Ajoute ton menu</h1>
+        <form action="/">
+          <input type="text" name="plat" id="plat" placeholder="Plat" required/>
+          <input type="text" name="livre" id="livre" placeholder="Livre"/>
+          <input type="text" name="page" id="page" placeholder="Page"/>
+          <hr>
+          <div class="evening">
+            <input type="checkbox" id="evening" name="evening" checked/>
+            <label for="evening">Evening</label>
+          </div>
+          <hr>
+          <div class="btn-block">
+            <button type="submit" href="/">Submit</button>
+          </div>
+        </form>
+      </div>
 </template>
 
 <style>
-@import './assets/base.css';
+@import './assets/test.css';
 
 #app {
   max-width: 1280px;
